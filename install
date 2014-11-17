@@ -1,0 +1,19 @@
+sudo apt-get update
+clear
+echo "Updated"
+clear
+sudo apt-get install nodejs npm libnss-mdns libavahi-compat-libdnssd-dev -y
+sudo npm config set registry http://registry.npmjs.org/
+sudo npm install -g node-gyp
+npm rebuild
+sudo apt-get install nodejs-legacy
+npm install shelljs
+cp wemo/wemo /usr/local/bin/wemo
+chmod 777 /usr/local/bin/wemo
+clear
+echo "Installation completed"
+clear
+echo "Run server type node Core.js"
+
+
+

@@ -1,8 +1,9 @@
 // HomeKit types required
 var types = require("./types.js")
 var exports = module.exports = {};
+require('shelljs/global');
+var execute = function(accessory,characteristic,value){ console.log("executed accessory: " + accessory + ", and characteristic: " + characteristic + ", with value: " + value + "."); }
 
-var execute = function(accessory,characteristic,value){ console.log("executed accessory: " + accessory + ", and characteristic: " + characteristic + ", with value: " +  value + "."); }
 
 exports.accessory = {
   displayName: "Light 1",
@@ -75,7 +76,7 @@ exports.accessory = {
 		designedMaxLength: 255   
     },{
     	cType: types.POWER_STATE_CTYPE,
-    	onUpdate: function(value) { console.log("Change:",value); execute("Test Accessory 1", "light service", value); },
+    	onUpdate: function(value) { console.log("Change:",value); execute("Test Accessory 1", "light service", value); var wemo = exec('wemo 192.168.0.14 '+value); },
     	perms: ["pw","pr","ev"],
 		format: "bool",
 		initialValue: false,
